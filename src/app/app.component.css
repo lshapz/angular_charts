@@ -1,0 +1,20 @@
+.flexbox-container {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+h1 {
+  text-align: center;
+}
+
+.title {
+  margin-top: 5%;
+}
+
+li {
+  list-style: none;
+  font-size: 4rem;
+}
