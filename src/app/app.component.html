@@ -1,21 +1,26 @@
 
-<h1 class="title">Data randomizes every 5 seconds</h1>
+<!-- <h1 class="title">Data randomizes every 5 seconds</h1> -->
 
 <div class="flexbox-container">
-
+<!--
   <app-line-plot
-    [data]="dateData"
-    [propID]="propID"
-    [title]="title"
+    [data]="lineData"
+    [propID]="linePropID"
+    [title]="lineTitle"
     [color]="color"
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
   ></app-line-plot>
   <ul>
-    <li *ngFor="let datum of dateData"><em>{{datum.date}}:</em> {{datum.value}} </li>
+    <li *ngFor="let datum of lineData"><em>{{datum.date}}:</em> {{datum.value}} </li>
   </ul>
 
   <app-sunburst
-  [data]="flareData"
-></app-sunburst>
+  [data]="sunburstData"
+></app-sunburst> -->
+<app-pie-chart
+  [data]="pieData"
+  [donutWidth]="donutWidth"
+></app-pie-chart>
+
 </div>

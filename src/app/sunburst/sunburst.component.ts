@@ -33,7 +33,7 @@ export class SunburstComponent implements OnInit, OnChanges, AfterViewInit {
     this.drawSunburst();
   }
 
-  drawSunburst(){
+  drawSunburst() {
         // let localThis = this;
         d3.selectAll(`.${this.propID}_tooltip`).remove();
         const selection_string = "#" + this.propID;

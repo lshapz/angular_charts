@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LinePlotComponent } from './line-plot/line-plot.component';
 import { SunburstComponent } from './sunburst/sunburst.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LinePlotComponent,
-    SunburstComponent
+    SunburstComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule
