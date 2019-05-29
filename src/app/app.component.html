@@ -14,4 +14,8 @@
   <ul>
     <li *ngFor="let datum of dateData"><em>{{datum.date}}:</em> {{datum.value}} </li>
   </ul>
+
+  <app-sunburst
+  [data]="flareData"
+></app-sunburst>
 </div>
