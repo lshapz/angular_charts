@@ -59,8 +59,7 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     function hex2rgb(hex) {
-      // tslint:disable-next-line:no-bitwise
-      return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
+      return [<any>'0x' + hex[1] + hex[2] | 0, <any>'0x' + hex[3] + hex[4] | 0, <any>'0x' + hex[5] + hex[6] | 0];
     }
 
     const localThis = this;
@@ -126,8 +125,8 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
         return `rgb(${darker[0]}, ${darker[1]}, ${darker[2]})`;
 
         });
-
-      const percent = Math.round(d.data.value / localThis.total * 100)
+        debugger
+      const percent = Math.round(d.data.value / localThis.total * 100);
       tooltip.transition()
         .duration(100)
         .style("opacity", 1);
@@ -147,10 +146,10 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
       d3.select(this).selectAll('path').
         attr('fill', function(dt){
           const label = dt.data ? dt.data.label : dt.label;
-          return localThis.savedColors[label]
+          return localThis.savedColors[label];
 
-        })
-      })
+        });
+      });
 
     const colors = this.colors;
 

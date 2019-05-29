@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 const sunburstData = require('../assets/sunburstData.json');
 const lineData = require('../assets/lineData.json');
 const pieData = require('../assets/pieData.json');
+const bubbleData = require('../assets/bubbleData.json');
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   lineData = lineData;
   sunburstData = sunburstData;
   pieData = pieData;
+  bubbleData = bubbleData;
 
   randomNumber(min, max) {
     return Math.floor(Math.random() * max) + min;
