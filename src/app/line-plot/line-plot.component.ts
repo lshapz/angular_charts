@@ -69,7 +69,7 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
         : false;
     let element: any;
 
-    let selected = document.querySelectorAll(selection_string);
+    const selected = document.querySelectorAll(selection_string);
 
     if (selected[0] == null) {
       element = [{clientWidth: 500, clientHeight: 500}];
@@ -77,16 +77,16 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
       element = selected[0];
     }
 
-    let margin = { top: 20, right: 30, bottom: 45, left: 40 },
-      width = element.clientWidth - margin.left - margin.right,
-      height = element.clientHeight - margin.top - margin.bottom;
+    const margin = { top: 20, right: 30, bottom: 45, left: 40 },
+      width = element.clientWidth - margin.left - margin.right;
+    let height = element.clientHeight - margin.top - margin.bottom;
 
     // Account for panel heading height if the title exists.
     if (this.title) {
       height -= 40;
     }
 
-    let xValue = function(d) {
+    const xValue = function(d) {
         return d.date;
       },
       xScale = d3.scaleTime().range([0, width - margin.right]),
@@ -104,28 +104,38 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
       format_attribute = d3.format("");
     }
 
-    let yValue = function(d) {
+    const yValue = function(d) {
         return d.value;
       },
       yScale = d3.scaleLinear().range([height, 0]),
       yMap = function(d) {
+        console.log("y scale is " + yScale(yValue(d)));
+        console.log(d);
         return yScale(yValue(d));
-      };
+      },
+      yAxisScale = d3.scaleLinear()
+      .range([height - yScale(d3.min(data)), 0]);
 
-    xScale.domain(d3.extent(data, xValue));
-    yScale.domain([d3.min(data, yValue), d3.max(data, yValue)]);
 
-    let yAxis = d3.axisLeft()
+    xScale.domain(d3.extent(data, xValue)).nice();
+    yScale.domain(d3.extent(data, yValue)).nice();
+
+    // yScale.domain([d3.min(data, yValue), d3.max(data, yValue)]);
+
+    const yAxis = d3.axisLeft()
       .scale(yScale)
+      // .tickValues([-200, -150, -100, -50, 0, 50, 100, 150, 200, 250, 300, 350])
       .tickSizeInner(-width)
-      .ticks(4)
       .tickFormat(format_attribute);
 
-    let line = d3.line()
+    const line = d3.line()
       .x(xMap)
-      .y(yMap);
+      .y(yMap)
+      .curve(d3.curveLinear);
 
-    let svg = d3
+    // debugger
+
+    const svg = d3
       .select(selection_string)
       .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -133,13 +143,13 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    let tooltip = d3
+    const tooltip = d3
       .select("body")
       .append("div")
       .attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
       .style("opacity", 0);
 
-    svg.style("fill", "transparent")
+    svg.style("fill", "transparent");
     svg
       .append("g")
       .attr("class", "x axis xaxis axis-line-plot1")
@@ -168,31 +178,32 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
       .attr("font-size", "16px")
       .text(this.yAxisLabel);
 
-    let clip_id = "clip-" + this.propID;
+    const clip_id = "clip-" + this.propID;
 
-    svg
-      .append("clipPath")
-      .attr("id", clip_id)
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("width", width > 0 ? width : 0)
-      .attr("height", height > 0 ? height : 0);
+    // svg
+    //   .append("clipPath")
+    //   .attr("id", clip_id)
+    //   .append("rect")
+    //   .attr("x", 0)
+    //   .attr("y", 0)
+    //   .attr("width", width > 0 ? width : 0)
+    //   .attr("height", height > 0 ? height : 0);
 
-    svg
-      .append("rect")
-      .attr("class", "pane")
-      .attr("width", element.clientWidth)
-      .attr("height", height)
-      .attr("clip-path", "url(#" + clip_id + ")");
+    // svg
+    //   .append("rect")
+    //   .attr("class", "pane")
+    //   .attr("width", element.clientWidth)
+    //   .attr("height", height)
+    //   .attr("clip-path", "url(#" + clip_id + ")");
 
     svg
       .append("path")
       .datum(data)
       .attr("class", "line lineplotline")
       .attr("d", line)
-      .attr("clip-path", "url(#" + clip_id + ")")
-      .attr("stroke", color);
+      .attr("stroke", function (d) {
+        return (d.value > 50) ? 'green' : 'red';
+      });
 
     svg
       .selectAll(".dot")
@@ -239,7 +250,7 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
           .transition()
           .duration(50)
           .attr("opacity", 0);
-      })
+      });
 
     svg
       .selectAll(".tick")

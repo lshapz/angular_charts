@@ -1,28 +1,50 @@
 
-<!-- <h1 class="title">Data randomizes every 5 seconds</h1> -->
-
 <div class="flexbox-container">
-<!--
+
+  <app-bar-chart
+    [data]="barData"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [propID]="barPropID"
+    [color]="barColor"
+    [title]="barTitle"
+    [xAxisAngle]="axisAngle"
+    [yAxisAngle]="axisAngle"
+  >
+  </app-bar-chart>
+
+  <app-bubble-chart
+    [data]="bubbleData"
+    [propID]="bubblePropID"
+    [title]="bubbleTitle"
+    [isTime]="falseVar"
+    [isDate]="falseVar"
+    [themeColors]="bubbleColors"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+  ></app-bubble-chart>
+
   <app-line-plot
     [data]="lineData"
     [propID]="linePropID"
     [title]="lineTitle"
-    [color]="color"
-    [xAxisLabel]="xAxisLabel"
+    [color]="lineColor"
+    [xAxisLabel]="xAxisLabelDate"
     [yAxisLabel]="yAxisLabel"
   ></app-line-plot>
-  <ul>
-    <li *ngFor="let datum of lineData"><em>{{datum.date}}:</em> {{datum.value}} </li>
-  </ul>
+
+  <app-pie-chart
+    [data]="pieData"
+    [donutWidth]="donutWidth"
+    [propID]="piePropID"
+    [colors]="pieColors"
+    [title]="pieTitle"
+  ></app-pie-chart>
 
   <app-sunburst
-  [data]="sunburstData"
-></app-sunburst> -->
-<app-pie-chart
-  [data]="pieData"
-  [donutWidth]="donutWidth"
-></app-pie-chart>
-<app-bubble-chart
-  [data]="bubbleData"
-></app-bubble-chart>
+    [data]="sunburstData"
+    [propID]="sunburstPropID"
+    [title]="sunburstTitle"
+  ></app-sunburst>
+
 </div>

@@ -12,7 +12,6 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() data: [{label: string, value: number}];
   @Input() title: string;
   @Input() donutWidth = 0; // in pixels
-  @Input() units: string;
   @Input() colors = ["#081A4E", "#092369", "#1A649F", "#2485B4", "#2DA8C9", "#5DC1D0", "#9AD5CD", "#D5E9CB", "#64B5F6", "#01579B"];
     // need 10 hex colors;
   savedColors = {};
@@ -81,6 +80,12 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
       .append("g")
       // sets the center of the piechart to center of container
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    svg
+      .append("text")
+      .attr('font-size', '4em')
+      .attr('y', 20)
+      .attr('x', -50)
+      .text(localThis.total);
 
     // add tooltip div to the DOM
     const tooltip = d3
@@ -125,7 +130,6 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
         return `rgb(${darker[0]}, ${darker[1]}, ${darker[2]})`;
 
         });
-        debugger
       const percent = Math.round(d.data.value / localThis.total * 100);
       tooltip.transition()
         .duration(100)
@@ -169,6 +173,7 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
       })
       .attr("d", arc);
 
+
     // This is built in for smaller viewports
     // if the width is less than 800px then the legend won't be added
     // to the SVG the user is still able to hover or click on the pie
@@ -176,7 +181,7 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
     // let localThis = this;
     if (width > 800) {
       const legend = svg.selectAll(".legend")
-        .data(this.data, function(d){
+        .data(this.data, function(d) {
           return d.label;
         })
         .enter()

@@ -12,8 +12,6 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() propID = 'bubble';
   @Input() data: [{label: string, value: number}];
   @Input() title: string;
-  @Input() donutWidth = 0; // in pixels
-  @Input() units: string;
   @Input() isTime = false;
   @Input() isDate = false;
   @Input() themeColors = ["#081A4E", "#092369", "#1A649F", "#2485B4", "#2DA8C9", "#5DC1D0", "#9AD5CD", "#D5E9CB"];
@@ -328,7 +326,6 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
       })
       .style("opacity", 0.75)
       .on("mouseover", function(d) {
-        // const tooltip = d3.select(`${this.propID}_tooltip`);
         console.log(tooltip);
         tooltip.transition()
           .duration(100)
