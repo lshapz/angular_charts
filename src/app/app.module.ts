@@ -7,6 +7,7 @@ import { SunburstComponent } from './sunburst/sunburst.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { PunchCardComponent } from './punch-card/punch-card.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     SunburstComponent,
     PieChartComponent,
     BubbleChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    PunchCardComponent
   ],
   imports: [
     BrowserModule

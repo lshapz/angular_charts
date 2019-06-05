@@ -150,6 +150,10 @@ export class BarChartComponent implements OnChanges, AfterViewInit {
           .style("text-anchor", "end")
           .text(yaxisvalue);
 
+          function hex2rgb(hex) {
+            return [<any>'0x' + hex[1] + hex[2] | 0, <any>'0x' + hex[3] + hex[4] | 0, <any>'0x' + hex[5] + hex[6] | 0];
+          }
+
         if (data.length > 0) {
           chart
             .selectAll(".bar")
@@ -189,14 +193,27 @@ export class BarChartComponent implements OnChanges, AfterViewInit {
                 .select(this)
                 .transition()
                 .duration(50)
-                .style("fill", "#2485B4");
+                .style("fill", function(dt) {
+
+                  let currentFill: any;
+                  currentFill = hex2rgb(localThis.color);
+                  // if (currentFill.includes('#')){
+                  // } else {
+                  //   currentFill = currentFill.slice(0, currentFill.length -2).slice(4).split(', ')
+                  // }
+                  const darker = currentFill.map(item => {
+          // tslint:disable-next-line: radix
+                    return parseInt(item) * .75;
+                  });
+                  return `rgb(${darker[0]}, ${darker[1]}, ${darker[2]})`;
+                  });
             })
             .on("mouseout", function(d) {
               d3
                 .select(this)
                 .transition()
                 .duration(100)
-                .style("fill", "#2DA8C9");
+                .style("fill", localThis.color);
               tooltip
                 .transition()
                 .duration(300)

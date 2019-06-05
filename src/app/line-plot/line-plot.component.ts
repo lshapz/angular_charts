@@ -201,9 +201,11 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
       .datum(data)
       .attr("class", "line lineplotline")
       .attr("d", line)
-      .attr("stroke", function (d) {
-        return (d.value > 50) ? 'green' : 'red';
-      });
+      .attr("stroke-width", 3)
+      .attr("stroke", this.color);
+      // .attr("stroke", function (d) {
+      //   return (d.value > 50) ? 'green' : 'red';
+      // });
 
     svg
       .selectAll(".dot")

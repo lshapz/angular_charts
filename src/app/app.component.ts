@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 const sunburstData = require('../assets/sunburstData.json');
-const lineData = require('../assets/lineData.json');
+const punchData = require('../assets/punchData.json');
 const pieData = require('../assets/pieData.json');
+const lineData = require('../assets/lineData.json');
 const bubbleData = require('../assets/bubbleData.json');
 const barData = require('../assets/barData.json');
 
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
   barData = barData;
   barPropID = 'angularbar';
   barTitle = 'Bar Chart';
-  barColor = '#20AC59';
+  barColor = '#57a71c';
 
   bubbleData = bubbleData;
   bubblePropID = 'angularbubble';
@@ -30,13 +31,21 @@ export class AppComponent implements OnInit {
   lineData = lineData;
   linePropID = 'angularlines';
   lineTitle = 'Line Plot';
-  lineColor = "#20AC59";
+  lineColor = "#5c2197";
 
   pieData = pieData;
   piePropID = 'angularpie';
   pieTitle = 'Pie Chart';
-  pieColors = ["#643C30", "#8d4832", "#AC5033", "#D86E40", "#E29755", "#eaaf62", "#EFC26C", "#FBEA85", "#BCAAA4", "#6D4C41"];
+  pieColors = ["#081A4E", "#092369", "#1A649F", "#2485B4", "#2DA8C9", "#5DC1D0", "#9AD5CD", "#D5E9CB", "#64B5F6", "#01579B"];
   donutWidth = 250;
+
+  punchData = punchData;
+  punchPropID = 'angularpunch';
+  punchTitle = 'Punch Card';
+  punchColors =  ["#641E16", "#7B241C", "#922B21", "#A93226", "#C0392B", "#CD6155", "#D98880", "#E6B0AA", "#E57373", "#B71C1C"];
+  axisColor = ["#FF6F00", "#FFD600"];
+  // axisLabel
+  // we may need to discuss the onclick functions and how those regenerates the props here ?
 
   sunburstData = sunburstData;
   sunburstPropID = "angularsunburst";

@@ -1,5 +1,6 @@
-
 <div class="flexbox-container">
+
+
 
   <app-bar-chart
     [data]="barData"
@@ -40,7 +41,13 @@
     [colors]="pieColors"
     [title]="pieTitle"
   ></app-pie-chart>
-
+  <app-punch-card
+    [data]="punchData"
+    [propID]="punchPropID"
+    [colors]="punchColors"
+    [title]="punchTitle"
+    [axisColors]="axisColor"
+  ></app-punch-card>
   <app-sunburst
     [data]="sunburstData"
     [propID]="sunburstPropID"

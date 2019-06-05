@@ -40,7 +40,7 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
 
   drawPieChart() {
     if (this.total === 0 && this.data) {
-      this.data.forEach(el => {this.total += el['value']});
+      this.data.forEach(el => {this.total += el['value']; });
     }
 
     d3.selectAll(`.${this.propID}_tooltip`).remove();
@@ -148,7 +148,7 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
           .style("opacity", 0);
 
       d3.select(this).selectAll('path').
-        attr('fill', function(dt){
+        attr('fill', function(dt) {
           const label = dt.data ? dt.data.label : dt.label;
           return localThis.savedColors[label];
 
@@ -162,10 +162,10 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
       .attr("fill", function (d, i) {
         const length = colors.length;
         let color;
-        if (localThis.savedColors[d.data.label]){
-          color = localThis.savedColors[d.data.label]
+        if (localThis.savedColors[d.data.label]) {
+          color = localThis.savedColors[d.data.label];
         } else {
-          i >= length ? color = colors[i-length] : color = colors[i];
+          i >= length ? color = colors[i - length] : color = colors[i];
           localThis.savedColors[d.data.label] = color;
 
         }
@@ -197,7 +197,7 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
         .attr("fill", function (d, i) {
             const length = colors.length;
             let color;
-          if (localThis.savedColors[d.label]){
+          if (localThis.savedColors[d.label]) {
             color = localThis.savedColors[d.label];
           } else {
             i >= length ? color = colors[i - length] : color = colors[i];
@@ -233,12 +233,12 @@ export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
               const darker = currentFill.map(item => {
 // tslint:disable-next-line: radix
                 return parseInt(item) * .75;
-              })
+              });
               return `rgb(${darker[0]}, ${darker[1]}, ${darker[2]})`;
             } else {
               return ;
             }
-          })
+          });
         });
 
 
