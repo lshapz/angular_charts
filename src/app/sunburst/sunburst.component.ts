@@ -88,7 +88,7 @@ export class SunburstComponent implements OnInit, OnChanges, AfterViewInit {
         const svg = d3.select(selection_string).append("svg")
             .attr("width", width)
             .attr("height", height)
-          .append("g")
+            .append("g")
             .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
 
         const tooltip = d3

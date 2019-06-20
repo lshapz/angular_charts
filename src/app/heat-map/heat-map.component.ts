@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
 import * as d3 from 'd3';
-// import luxon from 'luxon';
 
 @Component({
   selector: 'app-heat-map',
@@ -17,10 +16,10 @@ export class HeatMapComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() propID = 'heat';
   @Input() xAxisAngle = 0;
   @Input() alertText = "magnitude";
-  @Input() data = [{x: String, y: String, magnitude: Number}, {date: String, magnitude: Number}];
+  @Input() data = [{}]; // {x: String, y: String, magnitude: Number} || {date: String, volume: Number}
   @Input() colors = ["#081A4E", "#092369", "#1A649F", "#2485B4", "#2DA8C9", "#5DC1D0", "#9AD5CD", "#D5E9CB", "#64B5F6", "#01579B"];
   // need 10 hex colors;
-  constructor() {
+constructor() {
   }
 
   ngOnInit() {
@@ -35,8 +34,20 @@ export class HeatMapComponent implements OnInit, OnChanges, AfterViewInit {
     this.draw();
   }
 
+  get dataModel() {
+    const returner = this.data.map(item=> {
+      const newItem = {x: item['date'] ? item['date'] : item['x'], magnitude: item['volume'] ? item['volume'] : item['magnitude']};
+      if (item['y']) {
+        newItem['y'] = item['y'];
+      }
+      return newItem;
+    }
+    )
+    return returner
+  }
+
   draw () {
-    const data = this.data;
+    let data = this.dataModel.slice();
     const selection_string = "#" + this.propID;
     const component = this;
     const width = 900,
@@ -69,16 +80,10 @@ export class HeatMapComponent implements OnInit, OnChanges, AfterViewInit {
     let max_value = 0;
 
     let x_elems, y_elems;
-
     // calendar, get the range of years to display
     if ( data !== undefined && data.length > 0 && this.dataType === 'calendar') {
-      data = data.map(item=> {
-        const newItem = {x: item.date || item.x, magnitude: item.volume || item.magnitude};
-        return newItem;
-      }
-      )
       data.forEach(function(datum) {
-        const date_year = parseDate(datum.x).getFullYear();
+        const date_year = parseDate(datum['x']).getFullYear();
         min_value = date_year < min_value ? date_year : min_value;
         max_value = date_year > max_value ? date_year : max_value;
       });
@@ -87,8 +92,8 @@ export class HeatMapComponent implements OnInit, OnChanges, AfterViewInit {
       y_elems = week_days;
     } else {
       // Get the range if not calendar.
-      x_elems = d3.set(data.map( function (item) { return item.x; })).values();
-      y_elems = d3.set(data.map( function (item) { return item.y; })).values();
+      x_elems = d3.set(data.map( function (item) { return item['x']; })).values();
+      y_elems = d3.set(data.map( function (item) { return item['y']; })).values();
     }
 
     d3.selectAll(`.${this.propID}_tooltip`).remove();
@@ -287,11 +292,10 @@ export class HeatMapComponent implements OnInit, OnChanges, AfterViewInit {
           d = { x: d };
         }
 
-      const item = localThis.data.filter(function(item) {
-        return item.x === d.x || item.date === d.x;
+      const item = localThis.dataModel.filter(function(item) {
+        return item['x'] === d.x;
       })[0];
-
-      let tooltipText = "Occurrences: " + "<b>" + item.magnitude + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>";
+      let tooltipText = "Occurrences: " + "<b>" + item['magnitude'] + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>";
 
       if (d.y) {
         tooltipText += "<b>Y: " + d.y + "</b>";
