@@ -3,14 +3,18 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-line-plot',
-  templateUrl: './line-plot.component.html',
-  styleUrls: ['./line-plot.component.css']
+  template: `
+  <h2>{{title}}</h2>
+  <div style="height: 750px; width: 750px;" >
+      <div [id]="propID" style="width:100%;height:100%"> </div>
+  </div>
+`
 })
 export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() propID = 'line';
   @Input() data: [{date: string, value: number}];
-  @Input() title: string;
+  @Input() title: "Line Plot";
   @Input() color = "#000";
   @Input() yAxisLabel = 'Value';
   @Input() xAxisLabel = 'Date';
@@ -263,5 +267,5 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
 
   }
 
-
 }
+

@@ -8,6 +8,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { PunchCardComponent } from './punch-card/punch-card.component';
+import { HeatMapComponent } from './heat-map/heat-map.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PunchCardComponent } from './punch-card/punch-card.component';
     PieChartComponent,
     BubbleChartComponent,
     BarChartComponent,
-    PunchCardComponent
+    PunchCardComponent,
+    HeatMapComponent
   ],
   imports: [
     BrowserModule

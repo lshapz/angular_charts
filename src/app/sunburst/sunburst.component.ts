@@ -3,8 +3,12 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-sunburst',
-  templateUrl: './sunburst.component.html',
-  styleUrls: ['./sunburst.component.css']
+  template: `
+  <h2>{{title}}</h2>
+  <div style="height: 750px; width: 750px;" >
+      <div [id]="propID" style="width:100%;height:100%"> </div>
+  </div>
+`
 })
 export class SunburstComponent implements OnInit, OnChanges, AfterViewInit {
 

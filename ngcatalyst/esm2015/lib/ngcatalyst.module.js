@@ -1,0 +1,24 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { NgModule } from '@angular/core';
+import { NgcatalystComponent } from './ngcatalyst.component';
+import { BarChartComponent } from './bar-chart.component';
+import { BubbleChartComponent } from './bubble-chart.component';
+import { LinePlotComponent } from './line-plot.component';
+import { PieChartComponent } from './pie-chart.component';
+import { PunchCardComponent } from './punch-card.component';
+import { SunburstComponent } from './sunburst.component';
+export class NgcatalystModule {
+}
+NgcatalystModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [NgcatalystComponent,
+                    BarChartComponent, BubbleChartComponent, LinePlotComponent, PieChartComponent, PunchCardComponent, SunburstComponent],
+                imports: [],
+                exports: [NgcatalystComponent,
+                    BarChartComponent, BubbleChartComponent, LinePlotComponent, PieChartComponent, PunchCardComponent, SunburstComponent]
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmdjYXRhbHlzdC5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZ2NhdGFseXN0LyIsInNvdXJjZXMiOlsibGliL25nY2F0YWx5c3QubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBQ3pDLE9BQU8sRUFBRSxtQkFBbUIsRUFBRSxNQUFNLHdCQUF3QixDQUFDO0FBQzdELE9BQU8sRUFBRSxpQkFBaUIsRUFBRSxNQUFNLHVCQUF1QixDQUFDO0FBQzFELE9BQU8sRUFBRSxvQkFBb0IsRUFBRSxNQUFNLDBCQUEwQixDQUFDO0FBQ2hFLE9BQU8sRUFBRSxpQkFBaUIsRUFBRSxNQUFNLHVCQUF1QixDQUFDO0FBQzFELE9BQU8sRUFBRSxpQkFBaUIsRUFBRSxNQUFNLHVCQUF1QixDQUFDO0FBQzFELE9BQU8sRUFBRSxrQkFBa0IsRUFBRSxNQUFNLHdCQUF3QixDQUFDO0FBQzVELE9BQU8sRUFBRSxpQkFBaUIsRUFBRSxNQUFNLHNCQUFzQixDQUFDO0FBVXpELE1BQU0sT0FBTyxnQkFBZ0I7OztZQVI1QixRQUFRLFNBQUM7Z0JBQ1IsWUFBWSxFQUFFLENBQUMsbUJBQW1CO29CQUNoQyxpQkFBaUIsRUFBRSxvQkFBb0IsRUFBRSxpQkFBaUIsRUFBRSxpQkFBaUIsRUFBRSxrQkFBa0IsRUFBRSxpQkFBaUIsQ0FBQztnQkFDdkgsT0FBTyxFQUFFLEVBQ1I7Z0JBQ0QsT0FBTyxFQUFFLENBQUMsbUJBQW1CO29CQUMzQixpQkFBaUIsRUFBRSxvQkFBb0IsRUFBRSxpQkFBaUIsRUFBRSxpQkFBaUIsRUFBRSxrQkFBa0IsRUFBRSxpQkFBaUIsQ0FBQzthQUN4SCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBOZ2NhdGFseXN0Q29tcG9uZW50IH0gZnJvbSAnLi9uZ2NhdGFseXN0LmNvbXBvbmVudCc7XG5pbXBvcnQgeyBCYXJDaGFydENvbXBvbmVudCB9IGZyb20gJy4vYmFyLWNoYXJ0LmNvbXBvbmVudCc7XG5pbXBvcnQgeyBCdWJibGVDaGFydENvbXBvbmVudCB9IGZyb20gJy4vYnViYmxlLWNoYXJ0LmNvbXBvbmVudCc7XG5pbXBvcnQgeyBMaW5lUGxvdENvbXBvbmVudCB9IGZyb20gJy4vbGluZS1wbG90LmNvbXBvbmVudCc7XG5pbXBvcnQgeyBQaWVDaGFydENvbXBvbmVudCB9IGZyb20gJy4vcGllLWNoYXJ0LmNvbXBvbmVudCc7XG5pbXBvcnQgeyBQdW5jaENhcmRDb21wb25lbnQgfSBmcm9tICcuL3B1bmNoLWNhcmQuY29tcG9uZW50JztcbmltcG9ydCB7IFN1bmJ1cnN0Q29tcG9uZW50IH0gZnJvbSAnLi9zdW5idXJzdC5jb21wb25lbnQnO1xuXG5ATmdNb2R1bGUoe1xuICBkZWNsYXJhdGlvbnM6IFtOZ2NhdGFseXN0Q29tcG9uZW50LFxuICAgIEJhckNoYXJ0Q29tcG9uZW50LCBCdWJibGVDaGFydENvbXBvbmVudCwgTGluZVBsb3RDb21wb25lbnQsIFBpZUNoYXJ0Q29tcG9uZW50LCBQdW5jaENhcmRDb21wb25lbnQsIFN1bmJ1cnN0Q29tcG9uZW50XSxcbiAgaW1wb3J0czogW1xuICBdLFxuICBleHBvcnRzOiBbTmdjYXRhbHlzdENvbXBvbmVudCxcbiAgICBCYXJDaGFydENvbXBvbmVudCwgQnViYmxlQ2hhcnRDb21wb25lbnQsIExpbmVQbG90Q29tcG9uZW50LCBQaWVDaGFydENvbXBvbmVudCwgUHVuY2hDYXJkQ29tcG9uZW50LCBTdW5idXJzdENvbXBvbmVudF1cbn0pXG5leHBvcnQgY2xhc3MgTmdjYXRhbHlzdE1vZHVsZSB7IH1cbiJdfQ==

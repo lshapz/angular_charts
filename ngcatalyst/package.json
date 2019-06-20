@@ -1,0 +1,23 @@
+{
+  "name": "ngcatalyst",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0",
+    "d3": "^5.9.2",
+    "luxon": "^1.16.0"
+  },
+  "main": "bundles/ngcatalyst.umd.js",
+  "module": "fesm5/ngcatalyst.js",
+  "es2015": "fesm2015/ngcatalyst.js",
+  "esm5": "esm5/ngcatalyst.js",
+  "esm2015": "esm2015/ngcatalyst.js",
+  "fesm5": "fesm5/ngcatalyst.js",
+  "fesm2015": "fesm2015/ngcatalyst.js",
+  "typings": "ngcatalyst.d.ts",
+  "metadata": "ngcatalyst.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

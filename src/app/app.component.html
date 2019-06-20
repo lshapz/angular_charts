@@ -2,7 +2,20 @@
 
 
 
-  <app-bar-chart
+  <app-heat-map
+    [data]="heatData"
+    [colors]="pieColors"
+  ></app-heat-map>
+
+  <app-heat-map
+  [data]="heatData2"
+  [dataType]="dataType"
+  [colors]="pieColors"
+  [propID]="heatPropID"
+  [xAxisAngle]="xAxisAngle"
+></app-heat-map>
+
+  <!-- <app-bar-chart
     [data]="barData"
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
@@ -41,6 +54,7 @@
     [colors]="pieColors"
     [title]="pieTitle"
   ></app-pie-chart>
+
   <app-punch-card
     [data]="punchData"
     [propID]="punchPropID"
@@ -48,10 +62,11 @@
     [title]="punchTitle"
     [axisColors]="axisColor"
   ></app-punch-card>
+
   <app-sunburst
     [data]="sunburstData"
     [propID]="sunburstPropID"
     [title]="sunburstTitle"
-  ></app-sunburst>
+  ></app-sunburst> -->
 
 </div>

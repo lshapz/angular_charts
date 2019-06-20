@@ -4,8 +4,17 @@ import luxon from 'luxon';
 
 @Component({
   selector: 'app-punch-card',
-  templateUrl: './punch-card.component.html',
-  styleUrls: ['./punch-card.component.css']
+  styles: [`
+    .punch-border {
+      stroke: grey
+    }
+  `],
+  template: `
+  <h2>{{title}}</h2>
+  <div style="height: 750px; width: 1500px; margin-left: 3%" >
+      <div [id]="propID" style="width:100%;height:100%"> </div>
+  </div>
+`
 })
 export class PunchCardComponent implements OnInit, OnChanges, AfterViewInit {
 
@@ -455,20 +464,20 @@ export class PunchCardComponent implements OnInit, OnChanges, AfterViewInit {
           .select("text")
           .transition()
           .style("opacity", 0);
-      })
-      .on("click", function(d, i) {
-        if (d > 0) {
-          if (localThis !== undefined) {
-            localThis.onClick(
-              "day",
-              localThis.getDay(yLabels[0][i].textContent),
-              -1
-            );
-          }
-
-          // window.location.href = redirect_url + yLabels[0][i].textContent + '/-1';
-        }
       });
+      // .on("click", function(d, i) {
+      //   if (d > 0) {
+      //     if (localThis !== undefined) {
+      //       localThis.onClick(
+      //         "day",
+      //         localThis.getDay(yLabels[0][i].textContent),
+      //         -1
+      //       );
+      //     }
+
+      //     // window.location.href = redirect_url + yLabels[0][i].textContent + '/-1';
+      //   }
+      // });
 
     // creates the needed svg and text elements to make the labels actually readable
     sumsYValues
@@ -595,12 +604,12 @@ export class PunchCardComponent implements OnInit, OnChanges, AfterViewInit {
           .select("text")
           .transition()
           .style("opacity", 0);
-      })
-      .on("click", function(d, i) {
-        if (d > 0) {
-          localThis.onClick("hour", 0, i);
-        }
       });
+      // .on("click", function(d, i) {
+      //   if (d > 0) {
+      //     localThis.onClick("hour", 0, i);
+      //   }
+      // });
 
     // creates the needed svg and text elements to make the labels actually readable
     sumsXValues

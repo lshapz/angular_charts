@@ -4,14 +4,18 @@ import luxon from 'luxon';
 
 @Component({
   selector: 'app-bubble-chart',
-  templateUrl: './bubble-chart.component.html',
-  styleUrls: ['./bubble-chart.component.css']
+  template: `
+<h2>{{title}}</h2>
+<div style="height: 750px; width: 750px;" >
+    <div [id]="propID" style="width:100%;height:100%"> </div>
+</div>
+  `
 })
 export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() propID = 'bubble';
   @Input() data: [{label: string, value: number}];
-  @Input() title: string;
+  @Input() title = 'Bubble Chart';
   @Input() isTime = false;
   @Input() isDate = false;
   @Input() themeColors = ["#081A4E", "#092369", "#1A649F", "#2485B4", "#2DA8C9", "#5DC1D0", "#9AD5CD", "#D5E9CB"];
@@ -21,9 +25,7 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
   dateFormat = '%Y-%m-%d';
   margin = { top: 20, right: 10, bottom: 30, left: 20 };
 
-
   constructor() { }
-
 
   get processedData() {
     const data = this.data;
@@ -35,8 +37,6 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
       console.error(err);
     }
     return data;
-
-
   }
 
   ngOnInit() {
@@ -51,7 +51,6 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
     this.drawBubbleChart(this.processedData);
   }
 
-
   xValue(d) {
     return d.x;
   }
@@ -60,43 +59,6 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
   }
   zValue(d) {
     return d.value;
-  }
-  mouseOverBubble(d) {
-    const tooltip = d3.select(`.${this.propID}_tooltip`);
-    tooltip.transition()
-      .duration(100)
-      .style("opacity", 1);
-    // tslint:disable-next-line:max-line-length
-    tooltip.html('<b class="tooltip-header">' + d.label + '</b>' + "<br/><b>" + this.xAxisLabel + "</b> " + (/*this.isTime ? this.pretty_duration(60 * this.xValue(d)) : */ this.xValue(d)) + "<br/><b>" + this.yAxisLabel + ": </b>" + this.yValue(d)
-      .toFixed(2) + "<br> <b>value:</b> " + this.zValue(d))
-      .style("left", (d3.event.pageX + 5) + "px")
-      .style("top", (d3.event.pageY - 28) + "px");
-    d3.select(tooltip[0])
-      .transition()
-      .duration(50)
-      .style("opacity", 1);
-  }
-
-  mouseOutBubble(d) {
-    const tooltip = d3.select(`.${this.propID}_tooltip`);
-    tooltip.transition().duration(300).style("opacity", 0);
-    d3.select(tooltip[0])
-      .transition()
-      .duration(200)
-      .style("opacity", 0);
-  }
-
-  clickedOnBubble(d) {
-    const click_cats = [d.category_1, d.category_2, d.category_3];
-    if (click_cats.indexOf('NULL') < 0) {
-      d3.select(".d3_visuals_tooltip").transition().style('opacity', 0);
-    }
-  }
-
-  agentClickedOnBubble(d) {
-    const tooltip = d3.select(".d3_visuals_tooltip");
-    tooltip.transition()
-        .style("opacity", 0);
   }
 
   pretty_duration(d) {
@@ -192,7 +154,6 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
       xScale = d3.scaleLinear().range([0, width]);
     }
 
-
     const xMap = function(d) {
         return xScale(xValue(d));
       },
@@ -234,7 +195,7 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
 
     const cValue = function(d) {
       return d.value;
-    }
+    };
 
     const valMin = d3.min(data, zValue);
     const valMax = d3.max(data, zValue);
@@ -308,8 +269,6 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
 
   // const mouseOver = this.mouseOverBubble;
 
-  const click = this.clickedOnBubble;
-
     svg.selectAll(".dot")
       .data(data)
       .enter()
@@ -340,8 +299,14 @@ export class BubbleChartComponent implements OnInit, OnChanges, AfterViewInit {
           .duration(50)
           .style("opacity", 1);
       })
-      .on("mouseout", this.mouseOutBubble)
-      .on("click", click);
+      .on("mouseout", function(d){
+        const tooltip = d3.select(`.${localThis.propID}_tooltip`);
+          tooltip.transition().duration(300).style("opacity", 0);
+          d3.select(tooltip[0])
+            .transition()
+            .duration(200)
+            .style("opacity", 0);
+      })
   }
 
 

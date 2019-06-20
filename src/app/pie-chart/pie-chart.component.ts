@@ -3,14 +3,18 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.css']
+  template: `
+  <h2>{{title}}</h2>
+  <div style="height: 750px; width: 750px;" >
+      <div [id]="propID" style="width:100%;height:100%"> </div>
+  </div>
+`
 })
 export class PieChartComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() propID = 'pie';
   @Input() data: [{label: string, value: number}];
-  @Input() title: string;
+  @Input() title: 'Pie Chart';
   @Input() donutWidth = 0; // in pixels
   @Input() colors = ["#081A4E", "#092369", "#1A649F", "#2485B4", "#2DA8C9", "#5DC1D0", "#9AD5CD", "#D5E9CB", "#64B5F6", "#01579B"];
     // need 10 hex colors;

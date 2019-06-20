@@ -3,14 +3,18 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-bar-chart',
-  templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.css']
+  template: `
+  <h2>{{title}}</h2>
+    <div style="height: 750px; width: 750px;" >
+      <div [id]="propID" style="width:100%;height:100%">
+      </div>
+    </div>
+  `
 })
 export class BarChartComponent implements OnChanges, AfterViewInit {
   @Input() data: [{name: string, value: number}];
   @Input() propID = 'barchart';
   @Input() color = '#2DA8C9';
-
   @Input() yAxisLabel = 'y';
   @Input() xAxisLabel = 'x';
   @Input() xAxisAngle = 45;
